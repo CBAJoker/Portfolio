@@ -1,4 +1,5 @@
-[# Muhammad Masoom – Portfolio](https://cbajoker.github.io/Portfolio/)
+# Muhammad Masoom [Portfolio](https://cbajoker.github.io/Portfolio/)
+
 
 Welcome to my personal portfolio website!  
 I'm a Computer Science student passionate about programming, automation, Linux, and cloud computing.  
