@@ -12,7 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        /* Smooth scroll */
         html { scroll-behavior: smooth; }
     </style>
 </head>
@@ -20,17 +19,75 @@
     <!-- Header and Navigation bar -->
     <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold text-blue-600 tracking-tight">MyPortfolio</h1>
-            <ul class="flex space-x-6 text-sm font-medium">
+            <!-- Logo & Branding -->
+            <div class="flex items-center gap-3">
+                <img src="img/icon.png" alt="Logo" class="w-8 h-8 rounded-full shadow-sm" />
+                <h1 class="text-xl font-extrabold text-blue-600 tracking-tight">Muhammad Masoom</h1>
+            </div>
+            <!-- Desktop Navigation -->
+            <ul class="hidden md:flex space-x-8 text-base font-semibold">
                 <li><a href="#about" class="hover:text-blue-500 transition">About</a></li>
                 <li><a href="#projects" class="hover:text-blue-500 transition">Projects</a></li>
                 <li><a href="#resume" class="hover:text-blue-500 transition">Resume</a></li>
                 <li><a href="#contact" class="hover:text-blue-500 transition">Contact</a></li>
+                <li>
+                    <a href="https://github.com/KernelNexus" target="_blank" title="GitHub" class="hover:text-blue-500 transition flex items-center gap-1">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.084-.729.084-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.803 5.624-5.475 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        <span class="sr-only">GitHub</span>
+                    </a>
+                </li>
             </ul>
+            <!-- Mobile Hamburger -->
+            <button id="nav-toggle" class="md:hidden flex items-center px-2 py-1 border rounded text-blue-600 border-blue-200 hover:bg-blue-50 focus:outline-none" aria-label="Open navigation">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16"/>
+                </svg>
+            </button>
         </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden fixed inset-0 bg-white bg-opacity-95 z-50 flex flex-col items-center justify-center space-y-8 text-xl font-semibold transition-all duration-300 opacity-0 pointer-events-none">
+            <button id="nav-close" class="absolute top-6 right-6 text-blue-600 hover:bg-blue-100 rounded-full p-2 focus:outline-none" aria-label="Close navigation">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+            <a href="#about" class="hover:text-blue-500 transition" onclick="closeMobileMenu()">About</a>
+            <a href="#projects" class="hover:text-blue-500 transition" onclick="closeMobileMenu()">Projects</a>
+            <a href="#resume" class="hover:text-blue-500 transition" onclick="closeMobileMenu()">Resume</a>
+            <a href="#contact" class="hover:text-blue-500 transition" onclick="closeMobileMenu()">Contact</a>
+            <a href="https://github.com/KernelNexus" target="_blank" class="hover:text-blue-500 transition flex items-center gap-2" onclick="closeMobileMenu()">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.084-.729.084-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.803 5.624-5.475 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                <span>GitHub</span>
+            </a>
+        </div>
+        <script>
+            // Mobile nav toggle logic
+            const navToggle = document.getElementById('nav-toggle');
+            const navClose = document.getElementById('nav-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+            function openMobileMenu() {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100');
+                document.body.style.overflow = 'hidden';
+            }
+            function closeMobileMenu() {
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.remove('opacity-100');
+                document.body.style.overflow = '';
+            }
+            navToggle.addEventListener('click', openMobileMenu);
+            navClose.addEventListener('click', closeMobileMenu);
+            // Close menu on link click (for accessibility)
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+        </script>
     </header>
     <!-- Hero Section -->
     <section id="hero" class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
+        <!-- Decorative Gradient Circle -->
+        <div class="absolute -top-16 -left-16 w-72 h-72 bg-gradient-to-tr from-blue-200 via-blue-400 to-blue-600 opacity-20 rounded-full blur-2xl z-0"></div>
+        <div class="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-100 via-blue-300 to-blue-500 opacity-20 rounded-full blur-2xl z-0"></div>
         <div class="absolute inset-0 pointer-events-none">
             <svg class="w-full h-full" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill="#3b82f6" fill-opacity="0.08" d="M0,160L60,170.7C120,181,240,203,360,197.3C480,192,600,160,720,133.3C840,107,960,85,1080,101.3C1200,117,1320,171,1380,197.3L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
@@ -38,8 +95,24 @@
         </div>
         <img src="img/profile.jpeg" alt="Profile" class="w-32 h-32 rounded-full border-4 border-blue-200 shadow-lg mb-6 z-10 object-cover" />
         <h2 class="text-4xl sm:text-5xl font-bold mb-4 relative z-10">
-            Hello, I'm <span class="text-blue-600">Muhammad Masoom</span>
+            Hello, I'm <span id="typed-name" class="text-blue-600"></span>
         </h2>
+        <script>
+            // Typing effect for name
+            document.addEventListener('DOMContentLoaded', function () {
+            const name = "Muhammad Masoom";
+            const target = document.getElementById('typed-name');
+            let i = 0;
+            function type() {
+                if (i <= name.length) {
+                target.textContent = name.slice(0, i);
+                i++;
+                setTimeout(type, 90);
+                }
+            }
+            type();
+            });
+        </script>
         <p class="text-lg sm:text-xl text-gray-600 mb-6 relative z-10 max-w-2xl">
             Computer Science student passionate about <span class="font-semibold text-blue-600">programming, automation, Linux, and cloud computing</span>. I love building efficient solutions, exploring new technologies, and sharing my learning journey.
         </p>
@@ -48,7 +121,7 @@
             <a href="#contact" class="px-6 py-3 bg-white border border-blue-600 text-blue-600 font-semibold rounded hover:bg-blue-50 transition">Contact Me</a>
         </div>
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-            <a href="#about" class="animate-bounce text-blue-600 hover:text-blue-800">
+            <a href="#about" class="text-blue-600 hover:text-blue-800">
                 <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M19 9l-7 7-7-7"/>
                 </svg>
@@ -57,213 +130,288 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="max-w-4xl mx-auto px-4 py-20">
-        <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 text-blue-700">About Me</h2>
-        <div class="bg-white rounded-lg shadow-md p-8">
-            <p class="text-gray-800 leading-relaxed text-center text-lg mb-4">
-                I'm an enthusiastic <span class="font-semibold text-blue-600">Computer Science student</span> with a passion for
-                <span class="font-semibold text-blue-600">programming, scripting, system administration, and cloud computing</span>.
-                I thrive on solving problems with code, automating tasks using Python, and exploring how systems work under the hood.
-            </p>
-            <p class="text-gray-600 leading-relaxed text-center mb-4">
-                My current focus is on mastering the Linux command line, writing efficient Python scripts for automation, and gaining hands-on experience with cloud platforms like AWS.
-                I'm also building a strong foundation in system-level programming and DevOps practices to support scalable, real-world applications.
-            </p>
-            <div class="flex justify-center gap-4 mt-6">
-                <img src="img/python.svg" alt="Python" class="w-8 h-8" title="Python" />
-                <img src="img/linux.svg" alt="Linux" class="w-8 h-8" title="Linux" />
-                <img src="img/aws.png" alt="AWS" class="w-8 h-8" title="AWS" />
-                <img src="img/bash.svg" alt="Bash" class="w-8 h-8" title="Bash" />
+    <section id="about" class="relative py-20">
+        <!-- Decorative Gradient -->
+        <div class="absolute -top-16 -right-16 w-64 h-64 bg-gradient-to-tr from-blue-200 via-blue-400 to-blue-600 opacity-20 rounded-full blur-2xl z-0"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="relative bg-white rounded-2xl shadow-2xl p-10 overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-blue-200">
+                <div class="absolute -top-10 -left-10 w-32 h-32 bg-gradient-to-tr from-blue-200 via-blue-400 to-blue-600 opacity-20 rounded-full blur-2xl z-0"></div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 text-blue-700 relative z-10">About Me</h2>
+                <p class="text-gray-800 leading-relaxed text-center text-lg mb-4 relative z-10">
+                    I'm an enthusiastic <span class="font-semibold text-blue-600">Computer Science student</span> with a passion for
+                    <span class="font-semibold text-blue-600">programming, scripting, system administration, and cloud computing</span>.
+                    I thrive on solving problems with code, automating tasks using Python, and exploring how systems work under the hood.
+                </p>
+                <p class="text-gray-600 leading-relaxed text-center mb-4 relative z-10">
+                    My current focus is on mastering the Linux command line, writing efficient Python scripts for automation, and gaining hands-on experience with cloud platforms like AWS.
+                    I'm also building a strong foundation in system-level programming and DevOps practices to support scalable, real-world applications.
+                </p>
+                <div class="flex justify-center gap-4 mt-6 relative z-10">
+                    <img src="img/python.svg" alt="Python" class="w-10 h-10" title="Python" />
+                    <img src="img/linux.svg" alt="Linux" class="w-10 h-10" title="Linux" />
+                    <img src="img/aws.png" alt="AWS" class="w-10 h-10" title="AWS" />
+                    <img src="img/bash.svg" alt="Bash" class="w-10 h-10" title="Bash" />
+                </div>
+                <!-- Subtle floating icon -->
+                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 z-0 opacity-10 pointer-events-none">
+                    <svg width="80" height="80" fill="none" viewBox="0 0 24 24" class="mx-auto">
+                        <path d="M12 20l9-5-9-5-9 5 9 5z" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="bg-gray-100 py-16">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Projects</h2>
-            <div class="grid md:grid-cols-2 gap-10">
-                <div class="bg-white p-6 rounded shadow-md hover:shadow-lg transition duration-300">
-                    <img src="img/win.png" alt="Windows 11 Setup Screenshot" class="w-full h-48 object-cover rounded mb-4">
-                    <h3 class="text-xl font-semibold mb-2">Windows 11 Setup for Students & Developers</h3>
-                    <h4 class="text-blue-600 font-medium mb-2">Essential Tools Pre-Installed: Dev-C++, VS Code, Browsers, MS Office, VM, Obsidian</h4>
-                    <p class="text-gray-600 mb-2">Set up a clean and productive Windows 11 environment tailored for students and beginner developers.
-                        Included all essentials like Dev-C++, Visual Studio Code, modern browsers, MS Office, a lightweight VM setup, and Obsidian for note-taking and knowledge management.
-                        This configuration saves time, avoids clutter, and provides a ready-to-go setup for coding, writing, learning, and organizing.
-                    </p>
-                    <a href="https://github.com/KernelNexus/win-setup" target="_blank" class="text-blue-500 hover:underline text-sm">View on GitHub</a>
-                </div>
-                <div class="bg-white p-6 rounded shadow-md hover:shadow-lg transition duration-300">
-                    <img src="img/wsl.png" alt="Kali WSL MOTD Screenshot" class="w-full h-48 object-cover rounded mb-4">
-                    <h3 class="text-xl font-semibold mb-2">Efficient Kali WSL Setup with MOTD System Stats</h3>
-                    <h4 class="text-blue-600 font-medium mb-2">Custom MOTD, Lightweight Linux, System Info at Login</h4>
-                    <p class="text-gray-600 mb-2">Helped a fellow student install Kali Linux inside WSL — no need for heavy VM setups or complex configurations.
-                        Also configured a custom MOTD (Message of the Day) to display key system info like hostname, IP address, CPU, RAM, and disk usage right at login.
-                        This lightweight setup is perfect for students who want to practice network testing and basic system monitoring without slowing down their system.
-                        A small setup that makes a big difference in learning Linux effectively.
-                    </p>
-                    <a href="https://github.com/KernelNexus/kali-wsl-motd" target="_blank" class="text-blue-500 hover:underline text-sm">View on GitHub</a>
+    <section id="projects" class="relative bg-gradient-to-br from-blue-50 via-white to-blue-100 py-20">
+        <div class="absolute -top-16 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-tr from-blue-200 via-blue-400 to-blue-600 opacity-20 rounded-full blur-2xl z-0"></div>
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="relative bg-white rounded-2xl shadow-2xl p-10 overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-blue-200">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-tr from-blue-200 via-blue-400 to-blue-600 opacity-20 rounded-full blur-2xl z-0"></div>
+                <h2 class="text-3xl font-bold text-center mb-12 text-blue-700 relative z-10">Projects</h2>
+                <div class="grid md:grid-cols-2 gap-10 relative z-10">
+                    <div class="bg-gradient-to-br from-blue-50 via-white to-blue-100 p-6 rounded-2xl shadow-md hover:shadow-lg transition duration-300 relative overflow-hidden">
+                        <img src="img/win.png" alt="Windows 11 Setup Screenshot" class="w-full h-48 object-cover rounded mb-4 shadow-lg">
+                        <h3 class="text-xl font-semibold mb-2">Windows 11 Setup for Students & Developers</h3>
+                        <h4 class="text-blue-600 font-medium mb-2">Essential Tools Pre-Installed: Dev-C++, VS Code, Browsers, MS Office, VM, Obsidian</h4>
+                        <p class="text-gray-600 mb-2">Set up a clean and productive Windows 11 environment tailored for students and beginner developers.
+                            Included all essentials like Dev-C++, Visual Studio Code, modern browsers, MS Office, a lightweight VM setup, and Obsidian for note-taking and knowledge management.
+                            This configuration saves time, avoids clutter, and provides a ready-to-go setup for coding, writing, learning, and organizing.
+                        </p>
+                        <a href="https://github.com/KernelNexus/win-setup" target="_blank" class="text-blue-500 hover:underline text-sm">View on GitHub</a>
+                        <div class="absolute -bottom-6 -right-6 opacity-10 pointer-events-none">
+                            <svg width="60" height="60" fill="none" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="#3b82f6" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-50 via-white to-blue-100 p-6 rounded-2xl shadow-md hover:shadow-lg transition duration-300 relative overflow-hidden">
+                        <img src="img/wsl.png" alt="Kali WSL MOTD Screenshot" class="w-full h-48 object-cover rounded mb-4 shadow-lg">
+                        <h3 class="text-xl font-semibold mb-2">Efficient Kali WSL Setup with MOTD System Stats</h3>
+                        <h4 class="text-blue-600 font-medium mb-2">Custom MOTD, Lightweight Linux, System Info at Login</h4>
+                        <p class="text-gray-600 mb-2">Helped a fellow student install Kali Linux inside WSL — no need for heavy VM setups or complex configurations.
+                            Also configured a custom MOTD (Message of the Day) to display key system info like hostname, IP address, CPU, RAM, and disk usage right at login.
+                            This lightweight setup is perfect for students who want to practice network testing and basic system monitoring without slowing down their system.
+                            A small setup that makes a big difference in learning Linux effectively.
+                        </p>
+                        <a href="https://github.com/KernelNexus/kali-wsl-motd" target="_blank" class="text-blue-500 hover:underline text-sm">View on GitHub</a>
+                        <div class="absolute -bottom-6 -right-6 opacity-10 pointer-events-none">
+                            <svg width="60" height="60" fill="none" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" stroke="#3b82f6" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Soft Skills Section -->
-    <section id="soft-skills" class="max-w-5xl mx-auto px-4 py-20">
-        <h2 class="text-3xl sm:text-4xl font-bold text-center mb-10 text-blue-700">Soft Skills</h2>
-        <div class="grid md:grid-cols-2 gap-12 items-start">
-            <ul class="space-y-6 text-lg">
-                <li class="flex items-start">
-                    <span class="inline-flex items-center justify-center w-9 h-9 mr-4 bg-blue-100 rounded-full text-blue-600">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M12 20l9-5-9-5-9 5 9 5z"/><path d="M12 12V4l9 5-9 5-9-5 9-5z"/></svg>
-                    </span>
-                    <div>
-                        <span class="font-semibold text-gray-800">Communication</span>
-                        <p class="text-sm text-gray-600 mt-1">Clear, concise, and effective in both writing and speaking. Able to explain technical concepts to non-technical audiences.</p>
-                    </div>
-                </li>
-                <li class="flex items-start">
-                    <span class="inline-flex items-center justify-center w-9 h-9 mr-4 bg-blue-100 rounded-full text-blue-600">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5-2 4-2 4 2 4 2"/></svg>
-                    </span>
-                    <div>
-                        <span class="font-semibold text-gray-800">Teamwork</span>
-                        <p class="text-sm text-gray-600 mt-1">Collaborative and supportive in group projects. Open to feedback and values diverse perspectives.</p>
-                    </div>
-                </li>
-                <li class="flex items-start">
-                    <span class="inline-flex items-center justify-center w-9 h-9 mr-4 bg-blue-100 rounded-full text-blue-600">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M9 17v-2a4 4 0 018 0v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    </span>
-                    <div>
-                        <span class="font-semibold text-gray-800">Adaptability</span>
-                        <p class="text-sm text-gray-600 mt-1">Quick to learn and adjust to new environments, tools, and challenges. Embraces change with a positive attitude.</p>
-                    </div>
-                </li>
-                <li class="flex items-start">
-                    <span class="inline-flex items-center justify-center w-9 h-9 mr-4 bg-blue-100 rounded-full text-blue-600">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M13 16h-1v-4h-1m1-4h.01"/><circle cx="12" cy="12" r="10"/></svg>
-                    </span>
-                    <div>
-                        <span class="font-semibold text-gray-800">Problem Solving</span>
-                        <p class="text-sm text-gray-600 mt-1">Analytical thinker with a solution-oriented mindset. Enjoys breaking down complex problems and finding creative solutions.</p>
-                    </div>
-                </li>
-            </ul>
-            <ul class="space-y-6 text-lg">
-                <li class="flex items-start">
-                    <span class="inline-flex items-center justify-center w-9 h-9 mr-4 bg-blue-100 rounded-full text-blue-600">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
-                    </span>
-                    <div>
-                        <span class="font-semibold text-gray-800">Time Management</span>
-                        <p class="text-sm text-gray-600 mt-1">Organized and able to prioritize tasks efficiently. Meets deadlines and balances multiple responsibilities.</p>
-                    </div>
-                </li>
-                <li class="flex items-start">
-                    <span class="inline-flex items-center justify-center w-9 h-9 mr-4 bg-blue-100 rounded-full text-blue-600">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M12 20v-6"/><path d="M6 12l6-6 6 6"/></svg>
-                    </span>
-                    <div>
-                        <span class="font-semibold text-gray-800">Continuous Learning</span>
-                        <p class="text-sm text-gray-600 mt-1">Always eager to learn and improve skills. Seeks feedback and stays updated with new trends and technologies.</p>
-                    </div>
-                </li>
-                <li class="flex items-start">
-                    <span class="inline-flex items-center justify-center w-9 h-9 mr-4 bg-blue-100 rounded-full text-blue-600">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M17 16l4-4m0 0l-4-4m4 4H7"/></svg>
-                    </span>
-                    <div>
-                        <span class="font-semibold text-gray-800">Empathy</span>
-                        <p class="text-sm text-gray-600 mt-1">Listens actively and understands others' perspectives. Builds positive relationships and fosters a supportive environment.</p>
-                    </div>
-                </li>
-            </ul>
+    <section id="soft-skills" class="relative py-20">
+        <div class="absolute -top-16 -left-16 w-64 h-64 bg-gradient-to-tr from-blue-200 via-blue-400 to-blue-600 opacity-20 rounded-full blur-2xl z-0"></div>
+        <div class="max-w-5xl mx-auto px-4 relative z-10">
+            <div class="relative bg-white rounded-2xl shadow-2xl p-10 overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-blue-200">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-tr from-blue-200 via-blue-400 to-blue-600 opacity-20 rounded-full blur-2xl z-0"></div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-10 text-blue-700 relative z-10">Soft Skills</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-start relative z-10">
+                    <ul class="space-y-6 text-lg">
+                        <li class="flex items-start">
+                            <span class="inline-flex items-center justify-center w-9 h-9 mr-4 bg-blue-100 rounded-full text-blue-600">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M12 20l9-5-9-5-9 5 9 5z"/><path d="M12 12V4l9 5-9 5-9-5 9-5z"/></svg>
+                            </span>
+                            <div>
+                                <span class="font-semibold text-gray-800">Communication</span>
+                                <p class="text-sm text-gray-600 mt-1">Clear, concise, and effective in both writing and speaking. Able to explain technical concepts to non-technical audiences.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="inline-flex items-center justify-center w-9 h-9 mr-4 bg-blue-100 rounded-full text-blue-600">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5-2 4-2 4 2 4 2"/></svg>
+                            </span>
+                            <div>
+                                <span class="font-semibold text-gray-800">Teamwork</span>
+                                <p class="text-sm text-gray-600 mt-1">Collaborative and supportive in group projects. Open to feedback and values diverse perspectives.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="inline-flex items-center justify-center w-9 h-9 mr-4 bg-blue-100 rounded-full text-blue-600">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M9 17v-2a4 4 0 018 0v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            </span>
+                            <div>
+                                <span class="font-semibold text-gray-800">Adaptability</span>
+                                <p class="text-sm text-gray-600 mt-1">Quick to learn and adjust to new environments, tools, and challenges. Embraces change with a positive attitude.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="inline-flex items-center justify-center w-9 h-9 mr-4 bg-blue-100 rounded-full text-blue-600">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M13 16h-1v-4h-1m1-4h.01"/><circle cx="12" cy="12" r="10"/></svg>
+                            </span>
+                            <div>
+                                <span class="font-semibold text-gray-800">Problem Solving</span>
+                                <p class="text-sm text-gray-600 mt-1">Analytical thinker with a solution-oriented mindset. Enjoys breaking down complex problems and finding creative solutions.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="space-y-6 text-lg">
+                        <li class="flex items-start">
+                            <span class="inline-flex items-center justify-center w-9 h-9 mr-4 bg-blue-100 rounded-full text-blue-600">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+                            </span>
+                            <div>
+                                <span class="font-semibold text-gray-800">Time Management</span>
+                                <p class="text-sm text-gray-600 mt-1">Organized and able to prioritize tasks efficiently. Meets deadlines and balances multiple responsibilities.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="inline-flex items-center justify-center w-9 h-9 mr-4 bg-blue-100 rounded-full text-blue-600">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M12 20v-6"/><path d="M6 12l6-6 6 6"/></svg>
+                            </span>
+                            <div>
+                                <span class="font-semibold text-gray-800">Continuous Learning</span>
+                                <p class="text-sm text-gray-600 mt-1">Always eager to learn and improve skills. Seeks feedback and stays updated with new trends and technologies.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="inline-flex items-center justify-center w-9 h-9 mr-4 bg-blue-100 rounded-full text-blue-600">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M17 16l4-4m0 0l-4-4m4 4H7"/></svg>
+                            </span>
+                            <div>
+                                <span class="font-semibold text-gray-800">Empathy</span>
+                                <p class="text-sm text-gray-600 mt-1">Listens actively and understands others' perspectives. Builds positive relationships and fosters a supportive environment.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 z-0 opacity-10 pointer-events-none">
+                    <svg width="80" height="80" fill="none" viewBox="0 0 24 24" class="mx-auto">
+                        <circle cx="12" cy="12" r="10" stroke="#3b82f6" stroke-width="2"/>
+                    </svg>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Timeline Section -->
-    <section id="timeline" class="max-w-5xl mx-auto px-4 py-20">
-        <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-blue-700">My Learning Journey</h2>
-        <ol class="relative border-l-4 border-blue-500 pl-8 space-y-12">
-            <li class="relative">
-                <span class="absolute -left-5 top-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">18</span>
-                <div class="ml-2">
-                    <h3 class="text-xl font-semibold text-blue-600">2018</h3>
-                    <p class="text-gray-700">Started building websites using <strong>WordPress</strong> and <strong>Blogger</strong>. Explored themes, SEO, and content publishing tools.</p>
+    <section id="timeline" class="relative py-20">
+        <div class="absolute -top-16 right-0 w-64 h-64 bg-gradient-to-tr from-blue-200 via-blue-400 to-blue-600 opacity-20 rounded-full blur-2xl z-0"></div>
+        <div class="max-w-5xl mx-auto px-4 relative z-10">
+            <div class="relative bg-white rounded-2xl shadow-2xl p-10 overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-blue-200">
+                <div class="absolute -top-10 -left-10 w-32 h-32 bg-gradient-to-tr from-blue-200 via-blue-400 to-blue-600 opacity-20 rounded-full blur-2xl z-0"></div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-blue-700 relative z-10">My Learning Journey</h2>
+                <ol class="relative border-l-4 border-blue-500 pl-8 space-y-12 z-10">
+                    <li class="relative">
+                        <span class="absolute -left-5 top-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">18</span>
+                        <div class="ml-2">
+                            <h3 class="text-xl font-semibold text-blue-600">2018</h3>
+                            <p class="text-gray-700">Started building websites using <strong>WordPress</strong> and <strong>Blogger</strong>. Explored themes, SEO, and content publishing tools.</p>
+                        </div>
+                    </li>
+                    <li class="relative">
+                        <span class="absolute -left-5 top-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">19</span>
+                        <div class="ml-2">
+                            <h3 class="text-xl font-semibold text-blue-600">2019</h3>
+                            <p class="text-gray-700">Learned basic <strong>HTML, CSS</strong> and created custom web pages. Developed interest in frontend design and interactive layouts.</p>
+                        </div>
+                    </li>
+                    <li class="relative">
+                        <span class="absolute -left-5 top-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">20</span>
+                        <div class="ml-2">
+                            <h3 class="text-xl font-semibold text-blue-600">2020</h3>
+                            <p class="text-gray-700">Started using <strong>JavaScript</strong> to build dynamic websites. Explored GitHub for hosting and version control.</p>
+                        </div>
+                    </li>
+                    <li class="relative">
+                        <span class="absolute -left-5 top-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">21</span>
+                        <div class="ml-2">
+                            <h3 class="text-xl font-semibold text-blue-600">2021</h3>
+                            <p class="text-gray-700">Discovered <strong>Linux</strong> and began using open-source tools. Practiced shell commands and system navigation.</p>
+                        </div>
+                    </li>
+                    <li class="relative">
+                        <span class="absolute -left-5 top-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">22</span>
+                        <div class="ml-2">
+                            <h3 class="text-xl font-semibold text-blue-600">2022</h3>
+                            <p class="text-gray-700">Learned about <strong>basic networking concepts</strong>, IP addressing, and command-line utilities like <code>ping</code>, <code>traceroute</code>, and <code>netstat</code>.</p>
+                        </div>
+                    </li>
+                    <li class="relative">
+                        <span class="absolute -left-5 top-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">23</span>
+                        <div class="ml-2">
+                            <h3 class="text-xl font-semibold text-blue-600">2023</h3>
+                            <p class="text-gray-700">Explored <strong>cloud computing</strong> using platforms like AWS. Deployed basic apps, understood virtual machines and cloud storage.</p>
+                        </div>
+                    </li>
+                    <li class="relative">
+                        <span class="absolute -left-5 top-1 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold shadow-lg">24</span>
+                        <div class="ml-2">
+                            <h3 class="text-xl font-semibold text-blue-700">2024 – Present</h3>
+                            <p class="text-gray-700">Focusing on <strong>programming (C/C++/Python)</strong>, <strong>Python automation</strong>, and <strong>system administration</strong>. Learning advanced Linux skills and planning to master cloud + scripting.</p>
+                        </div>
+                    </li>
+                </ol>
+                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 z-0 opacity-10 pointer-events-none">
+                    <svg width="80" height="80" fill="none" viewBox="0 0 24 24" class="mx-auto"></svg>
+                        <path d="M12 8v4l3 3" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="12" r="10" stroke="#3b82f6" stroke-width="2"/>
+                    </svg>
                 </div>
-            </li>
-            <li class="relative">
-                <span class="absolute -left-5 top-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">19</span>
-                <div class="ml-2">
-                    <h3 class="text-xl font-semibold text-blue-600">2019</h3>
-                    <p class="text-gray-700">Learned basic <strong>HTML, CSS</strong> and created custom web pages. Developed interest in frontend design and interactive layouts.</p>
-                </div>
-            </li>
-            <li class="relative">
-                <span class="absolute -left-5 top-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">20</span>
-                <div class="ml-2">
-                    <h3 class="text-xl font-semibold text-blue-600">2020</h3>
-                    <p class="text-gray-700">Started using <strong>JavaScript</strong> to build dynamic websites. Explored GitHub for hosting and version control.</p>
-                </div>
-            </li>
-            <li class="relative">
-                <span class="absolute -left-5 top-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">21</span>
-                <div class="ml-2">
-                    <h3 class="text-xl font-semibold text-blue-600">2021</h3>
-                    <p class="text-gray-700">Discovered <strong>Linux</strong> and began using open-source tools. Practiced shell commands and system navigation.</p>
-                </div>
-            </li>
-            <li class="relative">
-                <span class="absolute -left-5 top-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">22</span>
-                <div class="ml-2">
-                    <h3 class="text-xl font-semibold text-blue-600">2022</h3>
-                    <p class="text-gray-700">Learned about <strong>basic networking concepts</strong>, IP addressing, and command-line utilities like <code>ping</code>, <code>traceroute</code>, and <code>netstat</code>.</p>
-                </div>
-            </li>
-            <li class="relative">
-                <span class="absolute -left-5 top-1 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">23</span>
-                <div class="ml-2">
-                    <h3 class="text-xl font-semibold text-blue-600">2023</h3>
-                    <p class="text-gray-700">Explored <strong>cloud computing</strong> using platforms like AWS. Deployed basic apps, understood virtual machines and cloud storage.</p>
-                </div>
-            </li>
-            <li class="relative">
-                <span class="absolute -left-5 top-1 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold shadow-lg">24</span>
-                <div class="ml-2">
-                    <h3 class="text-xl font-semibold text-blue-700">2024 – Present</h3>
-                    <p class="text-gray-700">Focusing on <strong>programming (C/C++/Python)</strong>, <strong>Python automation</strong>, and <strong>system administration</strong>. Learning advanced Linux skills and planning to master cloud + scripting.</p>
-                </div>
-            </li>
-        </ol>
+            </div>
+        </div>
     </section>
 
     <!-- Resume Section -->
-    <section id="resume" class="max-w-4xl mx-auto px-4 py-16 text-center">
-        <h2 class="text-3xl font-bold mb-6">Resume</h2>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="resume.html" download class="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition">Download My Resume</a>
-            <a href="resume.html" target="_blank" class="inline-block px-6 py-3 bg-white border border-blue-600 text-blue-600 font-semibold rounded hover:bg-blue-50 transition">View Resume</a>
+    <section id="resume" class="relative py-20">
+        <div class="absolute -top-16 left-0 w-64 h-64 bg-gradient-to-tr from-blue-200 via-blue-400 to-blue-600 opacity-20 rounded-full blur-2xl z-0"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="relative bg-white rounded-2xl shadow-2xl p-10 text-center overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-blue-200">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-tr from-blue-200 via-blue-400 to-blue-600 opacity-20 rounded-full blur-2xl z-0"></div>
+                <h2 class="text-3xl font-bold mb-6 text-blue-700 relative z-10">Resume</h2>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
+                    <a href="resume.html" download class="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition">Download My Resume</a>
+                    <a href="resume.html" target="_blank" class="inline-block px-6 py-3 bg-white border border-blue-600 text-blue-600 font-semibold rounded hover:bg-blue-50 transition">View Resume</a>
+                </div>
+                <p class="mt-4 text-gray-600 relative z-10">Other documents: <a href="transcript.pdf" class="text-blue-500 hover:underline">Transcript</a></p>
+                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 z-0 opacity-10 pointer-events-none">
+                    <svg width="80" height="80" fill="none" viewBox="0 0 24 24" class="mx-auto">
+                        <path d="M12 20v-6M6 12l6-6 6 6" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
         </div>
-        <p class="mt-4 text-gray-600">Other documents: <a href="transcript.pdf" class="text-blue-500 hover:underline">Transcript</a></p>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="bg-gray-50 py-16">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-6">Contact Me</h2>
-            <div class="flex flex-col items-center gap-2">
-                <p class="text-gray-700 flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 12H8m8 0a8 8 0 11-16 0 8 8 0 0116 0z"/></svg>
-                    <a href="mailto:cadetmasoom@gmail.com" class="hover:underline">cadetmasoom@gmail.com</a>
-                </p>
-                <p class="text-gray-700 flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-7 19h-3v-8h3v8zm-1.5-9.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 9.268h-3v-4.604c0-1.099-.021-2.513-1.531-2.513-1.531 0-1.767 1.197-1.767 2.434v4.683h-3v-8h2.881v1.093h.041c.401-.761 1.381-1.563 2.845-1.563 3.042 0 3.604 2.003 3.604 4.605v4.865z"/></svg>
-                    <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" class="text-blue-500 hover:underline">LinkedIn</a>
-                </p>
-                <p class="text-gray-700 flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.084-.729.084-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.803 5.624-5.475 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                    <a href="https://github.com/KernelNexus" target="_blank" class="text-blue-500 hover:underline">GitHub</a>
-                </p>
+    <!-- Contact Section as Enhanced Card -->
+    <section id="contact" class="bg-gradient-to-br from-blue-50 via-white to-blue-100 py-20">
+        <div class="max-w-4xl mx-auto px-4 flex justify-center">
+            <div class="relative bg-white rounded-2xl shadow-2xl p-10 w-full max-w-md text-center overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-blue-200">
+                <!-- Decorative Gradient Circle -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-tr from-blue-200 via-blue-400 to-blue-600 opacity-20 rounded-full blur-2xl z-0"></div>
+                <h2 class="text-3xl font-extrabold mb-6 text-blue-700 relative z-10 tracking-tight">Contact Me</h2>
+                <div class="flex flex-col items-center gap-6 relative z-10">
+                    <a href="mailto:cadetmasoom@gmail.com" class="group flex items-center gap-3 px-4 py-3 rounded-lg bg-blue-50 hover:bg-blue-100 transition shadow hover:shadow-md">
+                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 group-hover:bg-blue-200 transition">
+                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 12H8m8 0a8 8 0 11-16 0 8 8 0 0116 0z"/></svg>
+                        </span>
+                        <span class="text-base font-medium text-gray-800 group-hover:text-blue-700 transition">cadetmasoom@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" class="group flex items-center gap-3 px-4 py-3 rounded-lg bg-blue-50 hover:bg-blue-100 transition shadow hover:shadow-md">
+                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 group-hover:bg-blue-200 transition">
+                            <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-7 19h-3v-8h3v8zm-1.5-9.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 9.268h-3v-4.604c0-1.099-.021-2.513-1.531-2.513-1.531 0-1.767 1.197-1.767 2.434v4.683h-3v-8h2.881v1.093h.041c.401-.761 1.381-1.563 2.845-1.563 3.042 0 3.604 2.003 3.604 4.605v4.865z"/></svg>
+                        </span>
+                        <span class="text-base font-medium text-gray-800 group-hover:text-blue-700 transition">LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/KernelNexus" target="_blank" class="group flex items-center gap-3 px-4 py-3 rounded-lg bg-blue-50 hover:bg-blue-100 transition shadow hover:shadow-md">
+                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 group-hover:bg-blue-200 transition">
+                            <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.084-.729.084-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.803 5.624-5.475 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        </span>
+                        <span class="text-base font-medium text-gray-800 group-hover:text-blue-700 transition">GitHub</span>
+                    </a>
+                </div>
+                <!-- Subtle floating icon -->
+                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 z-0 opacity-10 pointer-events-none">
+                    <svg width="80" height="80" fill="none" viewBox="0 0 24 24" class="mx-auto">
+                        <path d="M21 8V7a2 2 0 00-2-2H5a2 2 0 00-2 2v1m18 0v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8m18 0L12 15 3 8" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
             </div>
         </div>
     </section>
@@ -308,12 +456,8 @@
             </div>
         </div>
         <!-- Divider -->
-        
-            <!-- Site Last Updated -->
-            <div class="text-gray-400 text-xs">
-                Last updated: <span id="footer-date"></span>
-            </div>
-            
+        <div class="text-gray-400 text-xs">
+            Last updated: <span id="footer-date"></span>
         </div>
         <!-- Extra Info -->
         <div class="max-w-5xl mx-auto px-4 mt-8 text-center text-gray-400 text-xs">
