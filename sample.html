@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Contact Links</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 150, 0.1);
+            overflow: hidden;
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        .header {
+            background: linear-gradient(120deg, #2563eb 0%, #3b82f6 100%);
+            padding: 40px;
+            text-align: center;
+            color: white;
+        }
+        
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto 20px;
+            background: #e0f2fe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: #3b82f6;
+        }
+        
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .icon-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .icon-container:hover {
+            transform: translateY(-10px);
+        }
+        
+        .icon-wrapper {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .linkedin-wrapper {
+            background: linear-gradient(135deg, #0077b5 0%, #00a0dc 100%);
+        }
+        
+        .email-wrapper {
+            background: linear-gradient(135deg, #d946ef 0%, #a855f7 100%);
+        }
+        
+        .icon-wrapper i {
+            font-size: 36px;
+            color: white;
+        }
+        
+        .icon-container:hover .icon-wrapper {
+            transform: scale(1.1);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .ping {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            animation: ping 2s infinite;
+        }
+        
+        .linkedin-ping {
+            background: #0077b5;
+        }
+        
+        .email-ping {
+            background: #d946ef;
+        }
+        
+        .contact-label {
+            font-weight: 600;
+            font-size: 18px;
+            margin-top: 10px;
+            color: #334155;
+        }
+        
+        .contact-cta {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: inline-block;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .linkedin-cta {
+            background: #0077b5;
+            color: white;
+        }
+        
+        .email-cta {
+            background: #a855f7;
+            color: white;
+        }
+        
+        .contact-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .footer {
+            background: #f8fafc;
+            padding: 25px;
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        @keyframes ping {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.8;
+            }
+            75%, 100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .contact-icons {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-card">
+        <div class="header">
+            <div class="avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1 class="text-3xl font-bold">Masoom Cadet</h1>
+            <p class="text-lg mt-2 opacity-90">Digital Designer & Frontend Developer</p>
+        </div>
+        
+        <div class="contact-icons">
+            <!-- Enhanced LinkedIn Link -->
+            <div class="icon-container">
+                <a href="https://www.linkedin.com/services/page/85407333977850761a/" 
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   title="Connect on LinkedIn"
+                   class="icon-wrapper linkedin-wrapper">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span class="ping linkedin-ping"></span>
+                </a>
+                <span class="contact-label">LinkedIn</span>
+                <a href="https://www.linkedin.com/services/page/85407333977850761a/" 
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="contact-cta linkedin-cta">
+                    Connect
+                </a>
+            </div>
+            
+            <!-- Enhanced Email Link -->
+            <div class="icon-container">
+                <a href="mailto:cadetmasoom@gmail.com" 
+                   title="Send me an email"
+                   class="icon-wrapper email-wrapper">
+                    <i class="fas fa-envelope"></i>
+                    <span class="ping email-ping"></span>
+                </a>
+                <span class="contact-label">Email</span>
+                <a href="mailto:cadetmasoom@gmail.com" 
+                   class="contact-cta email-cta">
+                    Email Me
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Get in touch for collaborations, projects, or just to say hello!</p>
+            <p class="mt-2">Designed with ❤️ using HTML, CSS & Tailwind</p>
+        </div>
+    </div>
+    
+    <script>
+        // Add hover effects programmatically
+        document.querySelectorAll('.icon-container').forEach(container => {
+            container.addEventListener('mouseenter', () => {
+                container.querySelector('.ping').style.animation = 'none';
+                setTimeout(() => {
+                    container.querySelector('.ping').style.animation = 'ping 2s infinite';
+                }, 10);
+            });
+        });
+    </script>
+</body>
+</html>
