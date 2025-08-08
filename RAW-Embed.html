@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Embedding Techniques</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            color: #1a2a6c;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .methods-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .method-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+        
+        .method-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .method-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .method-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .method-title {
+            font-size: 1.4rem;
+            color: #1a2a6c;
+        }
+        
+        .method-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            min-height: 80px;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .code-block::before {
+            content: 'HTML';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #1a2a6c;
+            color: white;
+            padding: 3px 10px;
+            font-size: 0.8rem;
+            border-radius: 0 0 0 8px;
+        }
+        
+        .pros-cons {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .pros, .cons {
+            flex: 1;
+            padding: 10px;
+        }
+        
+        .pros {
+            border-right: 1px solid #eee;
+        }
+        
+        .pros h3, .cons h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #1a2a6c;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .pros li {
+            color: #28a745;
+        }
+        
+        .cons li {
+            color: #dc3545;
+        }
+        
+        .demo-section {
+            margin-top: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 1px solid #eee;
+        }
+        
+        .demo-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1a2a6c;
+            font-size: 1.8rem;
+        }
+        
+        .demo-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .demo-box {
+            flex: 1;
+            min-width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .demo-label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1a2a6c;
+            text-align: center;
+        }
+        
+        .demo-content {
+            min-height: 200px;
+            border: 1px dashed #ccc;
+            padding: 15px;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+        
+        @media (max-width: 768px) {
+            .methods-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .pros-cons {
+                flex-direction: column;
+            }
+            
+            .pros {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                margin-bottom: 15px;
+                padding-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Embedding HTML Files in HTML</h1>
+            <p class="subtitle">Learn various techniques to include external HTML content within your web pages with practical examples and implementation guides.</p>
+        </header>
+        
+        <div class="methods-container">
+            <!-- Method 1: Iframe -->
+            <div class="method-card">
+                <div class="method-header">
+                    <div class="method-icon">1</div>
+                    <h2 class="method-title">Using &lt;iframe&gt;</h2>
+                </div>
+                <div class="method-description">
+                    The simplest method to embed external HTML content. Creates an inline frame that acts as a separate browsing context.
+                </div>
+                <div class="code-block">
+&lt;iframe src="external.html" width="100%" height="300"&gt;<br>
+&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;<br>
+&lt;/iframe&gt;
+                </div>
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h3>Pros</h3>
+                        <ul>
+                            <li>Simple to implement</li>
+                            <li>Isolated CSS/JS context</li>
+                            <li>Widely supported</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h3>Cons</h3>
+                        <ul>
+                            <li>SEO challenges</li>
+                            <li>Scrollbar management</li>
+                            <li>Cross-domain restrictions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Method 2: Object -->
+            <div class="method-card">
+                <div class="method-header">
+                    <div class="method-icon">2</div>
+                    <h2 class="method-title">Using &lt;object&gt;</h2>
+                </div>
+                <div class="method-description">
+                    Embeds external resources as objects. More semantic than iframes and can handle various file types.
+                </div>
+                <div class="code-block">
+&lt;object data="external.html" type="text/html"<br>
+        width="100%" height="300"&gt;<br>
+    &lt;p&gt;Fallback content if object not supported.&lt;/p&gt;<br>
+&lt;/object&gt;
+                </div>
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h3>Pros</h3>
+                        <ul>
+                            <li>Supports multiple formats</li>
+                            <li>Fallback content</li>
+                            <li>Semantic HTML5 element</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h3>Cons</h3>
+                        <ul>
+                            <li>Limited styling control</li>
+                            <li>Browser support variations</li>
+                            <li>Less intuitive than iframe</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Method 3: JavaScript -->
+            <div class="method-card">
+                <div class="method-header">
+                    <div class="method-icon">3</div>
+                    <h2 class="method-title">JavaScript Fetch</h2>
+                </div>
+                <div class="method-description">
+                    Dynamically load HTML content using JavaScript. Provides the most control over how content is embedded.
+                </div>
+                <div class="code-block">
+&lt;div id="embedded-content"&gt;&lt;/div&gt;<br><br>
+&lt;script&gt;<br>
+fetch('external.html')<br>
+  .then(response => response.text())<br>
+  .then(data => {<br>
+    document.getElementById('embedded-content')<br>
+      .innerHTML = data;<br>
+  });<br>
+&lt;/script&gt;
+                </div>
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h3>Pros</h3>
+                        <ul>
+                            <li>Full control over content</li>
+                            <li>No isolated context</li>
+                            <li>Dynamic loading</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h3>Cons</h3>
+                        <ul>
+                            <li>Requires JavaScript</li>
+                            <li>CORS restrictions</li>
+                            <li>More complex implementation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2 class="demo-title">Embedding Demonstration</h2>
+            <div class="demo-container">
+                <div class="demo-box">
+                    <div class="demo-label">Using &lt;iframe&gt;</div>
+                    <div class="demo-content">
+                        <iframe src="demo-content.html" width="100%" height="200" style="border:1px solid #ccc; border-radius:5px;"></iframe>
+                    </div>
+                </div>
+                <div class="demo-box">
+                    <div class="demo-label">Using JavaScript Fetch</div>
+                    <div class="demo-content" id="js-demo">
+                        Content will load here via JavaScript...
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Embedding HTML content is essential for modular web development. Choose the method that best fits your project requirements.</p>
+            <p>Note: The JavaScript demo requires a live server due to browser security restrictions on file loading.</p>
+        </footer>
+    </div>
+
+    <script>
+        // JavaScript to demonstrate dynamic loading
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simple simulation of content loading
+            setTimeout(function() {
+                const content = `
+                <div style="text-align:center; padding:20px;">
+                    <h3 style="color:#1a2a6c;">Dynamically Loaded Content</h3>
+                    <p>This content was loaded via JavaScript.</p>
+                    <p>In a real implementation, this would come from an external HTML file.</p>
+                    <div style="background:linear-gradient(135deg, #1a2a6c, #b21f1f); height:4px; width:80%; margin:15px auto; border-radius:2px;"></div>
+                </div>
+                `;
+                document.getElementById('js-demo').innerHTML = content;
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
