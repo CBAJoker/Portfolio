@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Switcher Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.4s, color 0.3s;
+        }
+        
+        :root {
+            --light-bg: #f8fafc;
+            --light-card: #ffffff;
+            --light-text: #1e293b;
+            --light-text-secondary: #64748b;
+            --light-accent: #3b82f6;
+            --light-border: #e2e8f0;
+            
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --dark-text: #e2e8f0;
+            --dark-text-secondary: #94a3b8;
+            --dark-accent: #00c9a7;
+            --dark-border: #334155;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--light-text);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .dark-mode .logo-text {
+            background: linear-gradient(90deg, #00c9a7, #845ef7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .theme-toggle {
+            background: var(--light-card);
+            border: 2px solid var(--light-border);
+            border-radius: 30px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .dark-mode .theme-toggle {
+            background: var(--dark-card);
+            border-color: var(--dark-border);
+            color: var(--dark-text);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .theme-toggle i {
+            font-size: 20px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: var(--light-card);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+        
+        .dark-mode .card {
+            background: var(--dark-card);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--light-accent);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .dark-mode .card h2 {
+            color: var(--dark-accent);
+        }
+        
+        .card h2 i {
+            font-size: 28px;
+        }
+        
+        .card p {
+            color: var(--light-text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .dark-mode .card p {
+            color: var(--dark-text-secondary);
+        }
+        
+        .features {
+            list-style: none;
+        }
+        
+        .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--light-border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .dark-mode .features li {
+            border-bottom: 1px solid var(--dark-border);
+        }
+        
+        .features li:last-child {
+            border-bottom: none;
+        }
+        
+        .features li i {
+            color: var(--light-accent);
+            font-size: 18px;
+        }
+        
+        .dark-mode .features li i {
+            color: var(--dark-accent);
+        }
+        
+        .theme-info {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+        }
+        
+        .dark-mode .theme-info {
+            background: linear-gradient(135deg, #00c9a7, #845ef7);
+        }
+        
+        .theme-info h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .theme-info p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: white;
+            color: #3b82f6;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark-mode .btn {
+            background: #0f172a;
+            color: #00c9a7;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            color: var(--light-text-secondary);
+            border-top: 1px solid var(--light-border);
+        }
+        
+        .dark-mode footer {
+            color: var(--dark-text-secondary);
+            border-top: 1px solid var(--dark-border);
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-img">M</div>
+                <div class="logo-text">Theme Switcher</div>
+            </div>
+            <div class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+                <span>Switch to Dark Mode</span>
+            </div>
+        </header>
+        
+        <div class="grid">
+            <div class="card">
+                <h2><i class="fas fa-palette"></i> Light Theme</h2>
+                <p>The light theme features a clean, minimalist design with a focus on readability and simplicity.</p>
+                <ul class="features">
+                    <li><i class="fas fa-check-circle"></i> Bright background for reduced eye strain</li>
+                    <li><i class="fas fa-check-circle"></i> High contrast text for better readability</li>
+                    <li><i class="fas fa-check-circle"></i> Soothing blue color scheme</li>
+                    <li><i class="fas fa-check-circle"></i> Modern card-based layout</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2><i class="fas fa-moon"></i> Dark Theme</h2>
+                <p>The dark theme offers a sleek, modern look with reduced eye strain in low-light environments.</p>
+                <ul class="features">
+                    <li><i class="fas fa-check-circle"></i> Dark background for reduced eye fatigue</li>
+                    <li><i class="fas fa-check-circle"></i> Vibrant teal accents for visual appeal</li>
+                    <li><i class="fas fa-check-circle"></i> Energy efficient on OLED screens</li>
+                    <li><i class="fas fa-check-circle"></i> Enhanced focus on content</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2><i class="fas fa-sync-alt"></i> Easy Switching</h2>
+                <p>Toggle between themes with a single click. Your preference is automatically saved.</p>
+                <ul class="features">
+                    <li><i class="fas fa-check-circle"></i> One-click theme switching</li>
+                    <li><i class="fas fa-check-circle"></i> Automatic preference saving</li>
+                    <li><i class="fas fa-check-circle"></i> Smooth transitions between themes</li>
+                    <li><i class="fas fa-check-circle"></i> System preference detection</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="theme-info">
+            <h2>Modern Theme Switcher</h2>
+            <p>This demo shows how you can implement a theme switcher that toggles between light and dark themes. The design uses CSS variables and JavaScript to provide a seamless experience.</p>
+            <a href="#" class="btn">Try It Yourself</a>
+        </div>
+        
+        <footer>
+            <p>© 2023 Theme Switcher Demo | Click the button in the header to toggle themes</p>
+        </footer>
+    </div>
+    
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            updateButtonText();
+        }
+        
+        // Check system preference
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        if (prefersDarkScheme.matches && !savedTheme) {
+            body.classList.add('dark-mode');
+            updateButtonText();
+        }
+        
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            updateButtonText();
+            
+            // Save user preference
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        function updateButtonText() {
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i><span>Switch to Light Mode</span>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i><span>Switch to Dark Mode</span>';
+            }
+        }
+    </script>
+</body>
+</html>
