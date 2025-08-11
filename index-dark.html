@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muhammad Masoom | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/icon.png" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00c9a7;
+            --primary-light: #00d8b8;
+            --primary-dark: #00a68c;
+            --accent: #845ef7;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #e2e8f0;
+            --text-light: #94a3b8;
+            --highlight: #0ea5e9;
+        }
+        
+        body { 
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text);
+            transition: background 0.4s ease;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            color: var(--text);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 201, 167, 0.15);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 24px;
+            width: 2px;
+            height: calc(100% + 25px);
+            background: rgba(200, 200, 200, 0.1);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background: rgba(200, 200, 200, 0.1);
+            border-radius: 5px;
+            margin: 10px 0 20px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 201, 167, 0.3);
+        }
+        
+        .contact-card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .glow {
+            text-shadow: 0 0 10px rgba(0, 201, 167, 0.5);
+        }
+        
+        .neon-border {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .neon-border::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            animation: slide 3s linear infinite;
+        }
+        
+        @keyframes slide {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 201, 167, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 201, 167, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 201, 167, 0); }
+        }
+        
+        .grid-pattern {
+            background-image: 
+                radial-gradient(circle at 10px 10px, rgba(100, 100, 100, 0.1) 1px, transparent 0),
+                radial-gradient(circle at 30px 30px, rgba(100, 100, 100, 0.1) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-100 font-sans">
+    <!-- Header and Navigation bar -->
+    <header class="bg-dark-bg border-b border-gray-800 sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center relative">
+            <!-- Logo & Branding -->
+            <div class="flex items-center gap-3 group">
+                <div class="relative">
+                    <img src="img/icon.png" alt="Logo" class="w-10 h-10 rounded-full shadow-lg border-2 border-teal-500 transition-transform duration-300 group-hover:scale-110" />
+                    <span class="absolute -bottom-2 -right-2 w-3 h-3 bg-green-400 border-2 border-gray-900 rounded-full animate-pulse"></span>
+                </div>
+                <h1 class="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-teal-300 to-teal-500 tracking-tight transition group-hover:scale-105 duration-300">Muhammad Masoom</h1>
+            </div>
+            <!-- Desktop Navigation -->
+            <ul class="hidden md:flex space-x-8 text-base font-semibold items-center">
+                <li>
+                    <a href="#about" class="relative hover:text-teal-400 transition after:block after:h-0.5 after:bg-teal-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left">
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a href="#skills" class="relative hover:text-teal-400 transition after:block after:h-0.5 after:bg-teal-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left">
+                        Skills
+                    </a>
+                </li>
+                <li>
+                    <a href="#projects" class="relative hover:text-teal-400 transition after:block after:h-0.5 after:bg-teal-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left">
+                        Projects
+                    </a>
+                </li>
+                <li>
+                    <a href="#resume" class="relative hover:text-teal-400 transition after:block after:h-0.5 after:bg-teal-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left">
+                        Resume
+                    </a>
+                </li>
+                <li>
+                    <a href="#contact" class="relative hover:text-teal-400 transition after:block after:h-0.5 after:bg-teal-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left">
+                        Contact
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/services/page/85407333977850761a/" target="_blank" title="LinkedIn" class="hover:text-teal-400 transition flex items-center gap-1 group">
+                        <span class="relative">
+                            <svg class="w-6 h-6 group-hover:scale-110 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11.75 19h-3v-8h3v8zm-1.5-9.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.25 9.268h-3v-4.604c0-1.099-.021-2.513-1.531-2.513-1.531 0-1.767 1.197-1.767 2.434v4.683h-3v-8h2.881v1.093h.041c.401-.761 1.381-1.563 2.845-1.563 3.042 0 3.604 2.003 3.604 4.605v4.865z"/>
+                            </svg>
+                            <span class="absolute -top-2 -right-2 w-2 h-2 bg-teal-400 rounded-full animate-ping"></span>
+                        </span>
+                        <span class="sr-only">LinkedIn</span>
+                    </a>
+                </li>
+               <li>
+          <a href="index-light.html" class="ml-2 px-3 py-1 bg-teal-900 text-teal-300 rounded-full font-medium shadow hover:bg-teal-800 transition hidden lg:inline-block flex items-center">
+              <i class="fas fa-sun mr-2"></i> Light Mode
+          </a>
+      </li>
+            </ul>
+            <!-- Mobile Hamburger -->
+            <button id="nav-toggle" class="md:hidden flex items-center px-2 py-1 border border-teal-700 rounded text-teal-400 hover:bg-teal-900 focus:outline-none focus:ring-2 focus:ring-teal-500 transition">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16"/>
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden fixed inset-0 bg-dark-bg bg-opacity-95 z-50 flex flex-col items-center justify-center space-y-8 text-xl font-semibold transition-all duration-300 opacity-0 pointer-events-none">
+            <button id="nav-close" class="absolute top-6 right-6 text-teal-400 hover:bg-teal-900 rounded-full p-2 focus:outline-none" aria-label="Close navigation">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+            <a href="#about" class="hover:text-teal-400 transition" onclick="closeMobileMenu()">About</a>
+            <a href="#skills" class="hover:text-teal-400 transition" onclick="closeMobileMenu()">Skills</a>
+            <a href="#projects" class="hover:text-teal-400 transition" onclick="closeMobileMenu()">Projects</a>
+            <a href="#resume" class="hover:text-teal-400 transition" onclick="closeMobileMenu()">Resume</a>
+            <a href="#contact" class="hover:text-teal-400 transition" onclick="closeMobileMenu()">Contact</a>
+        </div>
+        <script>
+            // Mobile nav toggle logic
+            const navToggle = document.getElementById('nav-toggle');
+            const navClose = document.getElementById('nav-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+            function openMobileMenu() {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100');
+                document.body.style.overflow = 'hidden';
+            }
+            function closeMobileMenu() {
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.remove('opacity-100');
+                document.body.style.overflow = '';
+            }
+            navToggle.addEventListener('click', openMobileMenu);
+            navClose.addEventListener('click', closeMobileMenu);
+            // Close menu on link click (for accessibility)
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+        </script>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="h-screen flex flex-col justify-center items-center text-center relative overflow-hidden grid-pattern">
+        <!-- Animated Particles Background -->
+        <div id="particles-js" class="absolute inset-0 z-0"></div>
+        <!-- Decorative Gradient Circle -->
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-tr from-teal-600 via-teal-800 to-teal-900 opacity-20 rounded-full blur-3xl z-0 animate-pulse"></div>
+        <div class="absolute bottom-0 right-1/4 w-72 h-72 bg-gradient-to-br from-teal-900 via-teal-700 to-teal-500 opacity-15 rounded-full blur-3xl z-0"></div>
+        
+        <div class="relative z-10">
+            <div class="relative mx-auto w-32 h-32 mb-8">
+                <div class="absolute inset-0 bg-teal-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
+                <img src="img/profile.jpeg" alt="Profile" class="relative w-32 h-32 rounded-full border-4 border-teal-500 shadow-lg z-10 object-cover" />
+            </div>
+            
+            <h2 class="text-4xl sm:text-5xl font-bold mb-4 relative z-10">
+                Hello, I'm <span id="typed-name" class="text-teal-400 glow"></span>
+            </h2>
+            <script>
+                // Typing effect for name
+                document.addEventListener('DOMContentLoaded', function () {
+                const name = "Muhammad Masoom";
+                const target = document.getElementById('typed-name');
+                let i = 0;
+                function type() {
+                    if (i <= name.length) {
+                    target.textContent = name.slice(0, i);
+                    i++;
+                    setTimeout(type, 90);
+                    }
+                }
+                type();
+                });
+            </script>
+            <p class="text-lg sm:text-xl text-gray-400 mb-6 relative z-10 max-w-2xl mx-auto">
+                Computer Science student passionate about <span class="font-semibold text-teal-400">programming, automation, Linux, and cloud computing</span>. I love building efficient solutions, exploring new technologies, and sharing my learning journey.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+                <a href="#projects" class="px-6 py-3 bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-700 transition transform hover:-translate-y-1 shadow-lg shadow-teal-500/20">
+                    View Projects
+                </a>
+                <a href="#contact" class="px-6 py-3 bg-transparent border border-teal-600 text-teal-300 font-semibold rounded-lg hover:bg-teal-900/30 transition transform hover:-translate-y-1">
+                    Contact Me
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+            <a href="#about" class="text-teal-400 hover:text-teal-200">
+                <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M19 9l-7 7-7-7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="section-title">About Me</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="card p-8 neon-border">
+                        <p class="text-lg text-gray-300 mb-6">
+                            I'm an enthusiastic <span class="font-semibold text-teal-400">Computer Science student</span> with a passion for
+                            <span class="font-semibold text-teal-400">programming, scripting, system administration, and cloud computing</span>.
+                        </p>
+                        <p class="text-gray-400 mb-6">
+                            My current focus is on mastering the Linux command line, writing efficient Python scripts for automation, and gaining hands-on experience with cloud platforms like AWS.
+                            I'm also building a strong foundation in system-level programming and DevOps practices to support scalable, real-world applications.
+                        </p>
+                        <div class="flex flex-wrap gap-6 mt-8">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-teal-400">5+</div>
+                                <div class="text-gray-400">Years Experience</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-teal-400">10+</div>
+                                <div class="text-gray-400">Projects</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-teal-400">8+</div>
+                                <div class="text-gray-400">Technologies</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-1 lg:order-2 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-teal-500 rounded-2xl blur-xl opacity-20 animate-pulse"></div>
+                        <img src="img/profileicon.png" alt="Profile" class="relative w-full max-w-md rounded-2xl shadow-xl border-4 border-teal-500/30 z-10">
+                        <div class="absolute -bottom-6 -right-6 bg-teal-800 text-teal-200 px-6 py-3 rounded-lg shadow-lg z-20">
+                            <div class="flex items-center">
+                                <i class="fas fa-award text-xl mr-2 text-teal-300"></i>
+                                <span class="font-bold">Computer Science</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding bg-gray-900/30">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="section-title">Technical Skills</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="card p-8">
+                        <h3 class="text-xl font-bold mb-6 text-teal-400">Programming & Tools</h3>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-200">Python</span>
+                                <span class="text-teal-400">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-200">Linux/Bash</span>
+                                <span class="text-teal-400">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-200">AWS</span>
+                                <span class="text-teal-400">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-200">C/C++</span>
+                                <span class="text-teal-400">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="card p-8">
+                        <h3 class="text-xl font-bold mb-6 text-teal-400">Soft Skills</h3>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="flex items-start">
+                                <div class="bg-teal-900 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-comments text-teal-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1 text-gray-200">Communication</h4>
+                                    <p class="text-gray-400 text-sm">Clear technical explanations</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-teal-900 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-users text-teal-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1 text-gray-200">Teamwork</h4>
+                                    <p class="text-gray-400 text-sm">Collaborative approach</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-teal-900 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-lightbulb text-teal-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1 text-gray-200">Problem Solving</h4>
+                                    <p class="text-gray-400 text-sm">Analytical thinking</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-teal-900 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-book text-teal-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1 text-gray-200">Continuous Learning</h4>
+                                    <p class="text-gray-400 text-sm">Always improving skills</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-teal-900 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-sync-alt text-teal-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1 text-gray-200">Adaptability</h4>
+                                    <p class="text-gray-400 text-sm">Embracing new technologies</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-teal-900 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-tasks text-teal-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1 text-gray-200">Time Management</h4>
+                                    <p class="text-gray-400 text-sm">Meeting project deadlines</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-padding">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="section-title">My Projects</h2>
+            
+            <!-- Project 1 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-teal-500 rounded-xl blur-xl opacity-20"></div>
+                    <img src="img/win.png" alt="Windows 11 Setup" class="relative rounded-xl shadow-lg w-full z-10">
+                </div>
+                <div>
+                    <div class="bg-teal-900 text-teal-300 inline-block px-4 py-1 rounded-full text-sm font-medium mb-4">
+                        System Setup
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-200">Windows 11 Setup for Students & Developers</h3>
+                    <p class="text-gray-400 mb-6">
+                        Set up a clean and productive Windows 11 environment tailored for students and beginner developers.
+                        Included all essentials like Dev-C++, Visual Studio Code, modern browsers, MS Office, a lightweight VM setup, and Obsidian for note-taking.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <span class="bg-gray-800 px-3 py-1 rounded text-sm text-gray-300">Dev-C++</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded text-sm text-gray-300">VS Code</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded text-sm text-gray-300">Obsidian</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded text-sm text-gray-300">VM Setup</span>
+                    </div>
+                    <a href="https://github.com/CBAJoker" target="_blank" class="inline-flex items-center text-teal-400 font-medium hover:text-teal-300">
+                        View on GitHub <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                <div class="lg:order-2 relative">
+                    <div class="absolute inset-0 bg-purple-500 rounded-xl blur-xl opacity-20"></div>
+                    <img src="img/wsl.png" alt="Kali WSL MOTD" class="relative rounded-xl shadow-lg w-full z-10">
+                </div>
+                <div class="lg:order-1">
+                    <div class="bg-purple-900 text-purple-300 inline-block px-4 py-1 rounded-full text-sm font-medium mb-4">
+                        Linux Configuration
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-200">Efficient Kali WSL Setup with MOTD System Stats</h3>
+                    <p class="text-gray-400 mb-6">
+                        Helped a fellow student install Kali Linux inside WSL with custom MOTD to display key system info like hostname, IP address, CPU, RAM, and disk usage.
+                        This lightweight setup is perfect for students who want to practice network testing without slowing down their system.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <span class="bg-gray-800 px-3 py-1 rounded text-sm text-gray-300">Kali Linux</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded text-sm text-gray-300">WSL</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded text-sm text-gray-300">Bash Scripting</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded text-sm text-gray-300">System Monitoring</span>
+                    </div>
+                    <a href="https://github.com/CBAJoker" target="_blank" class="inline-flex items-center text-teal-400 font-medium hover:text-teal-300">
+                        View on GitHub <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-padding bg-gray-900/30">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="section-title">My Services</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="card p-8 text-center hover:border-teal-500/30 transition-colors">
+                    <div class="bg-teal-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-code text-teal-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-200">Programming Tutoring</h3>
+                    <p class="text-gray-400">
+                        Personalized lessons in Python, C, and C++ for beginners and intermediates.
+                    </p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="card p-8 text-center hover:border-teal-500/30 transition-colors">
+                    <div class="bg-teal-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-cogs text-teal-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-200">System Setup & Automation</h3>
+                    <p class="text-gray-400">
+                        Windows/Linux setup, software installation, and custom automation scripts.
+                    </p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="card p-8 text-center hover:border-teal-500/30 transition-colors">
+                    <div class="bg-teal-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-file-alt text-teal-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-200">Technical Writing</h3>
+                    <p class="text-gray-400">
+                        Clear, concise documentation for projects, labs, and tutorials.
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="card p-8 text-center hover:border-teal-500/30 transition-colors">
+                    <div class="bg-teal-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-ellipsis-h text-teal-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-200">More Services</h3>
+                    <p class="text-gray-400">
+                        More Freelancing support options available on demand.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="section-padding">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="section-title">My Resume</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="card p-8 neon-border">
+                    <h3 class="text-xl font-bold mb-6 text-teal-400">Education & Experience</h3>
+                    
+                    <div class="space-y-8">
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-lg text-gray-200">Bachelor of Computer Science</h4>
+                            <div class="text-teal-400 mb-2">Quest Nawabshah | 2024 - Present</div>
+                            <p class="text-gray-400">
+                                Focus on programming, system administration, and cloud computing.
+                                Relevant coursework: Data Structures, Algorithms, Operating Systems.
+                            </p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-lg text-gray-200">Programming Tutor</h4>
+                            <div class="text-teal-400 mb-2">Quest Nawabshah | 2024 - Present</div>
+                            <p class="text-gray-400">
+                                Help students master Python, C, and C++ concepts through personalized tutoring sessions.
+                                Developed custom learning materials for complex topics.
+                            </p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-lg text-gray-200">IT Support Specialist</h4>
+                            <div class="text-teal-400 mb-2">Freelancer | 2018 - Present</div>
+                            <p class="text-gray-400">
+                                Provided technical support for students and beginners to maintain and set up their environments for Learning and Development. I also provide cost-effective ideas and time management solutions, maintained systems, and implemented automation scripts.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="card p-8 h-full flex flex-col neon-border">
+                        <div class="flex-grow">
+                            <h3 class="text-xl font-bold mb-6 text-teal-400">Download Resume</h3>
+                            <p class="text-gray-400 mb-8">
+                                Download my full resume to see detailed information about my education, work experience, skills, and accomplishments.
+                            </p>
+                            
+                            <div class="bg-teal-900/30 p-6 rounded-xl mb-8 border border-teal-500/20">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-file-pdf text-red-400 text-2xl mr-3"></i>
+                                    <div>
+                                        <h4 class="font-bold text-gray-200">Resume.pdf</h4>
+                                        <p class="text-gray-500 text-sm">Updated: June 2024</p>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-400">
+                                    Includes detailed information about projects, technologies, and professional experience.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="/src/resume.pdf" download class="px-6 py-3 bg-teal-600 text-white font-semibold rounded hover:bg-teal-700 transition text-center shadow-lg shadow-teal-500/20">
+                                <i class="fas fa-download mr-2"></i> Download Resume
+                            </a>
+                            <a href="/src/resume.html" target="_blank" class="px-6 py-3 bg-transparent border border-teal-600 text-teal-300 font-semibold rounded hover:bg-teal-900/30 transition text-center">
+                                <i class="fas fa-eye mr-2"></i> View Online
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-gray-900/30">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="section-title">Get In Touch</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="card contact-card p-8">
+                        <h3 class="text-xl font-bold mb-6 text-teal-400">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-teal-900 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-envelope text-teal-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1 text-gray-200">Email</h4>
+                                    <a href="mailto:cadetmasoom@gmail.com" class="text-gray-400 hover:text-teal-400">cadetmasoom@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-teal-900 p-3 rounded-lg mr-4">
+                                    <i class="fab fa-linkedin-in text-teal-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1 text-gray-200">LinkedIn</h4>
+                                    <a href="https://www.linkedin.com/services/page/85407333977850761a/" target="_blank" class="text-gray-400 hover:text-teal-400">Connect with me</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-teal-900 p-3 rounded-lg mr-4">
+                                    <i class="fab fa-github text-teal-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1 text-gray-200">GitHub</h4>
+                                    <a href="https://github.com/CBAJoker?tab=repositories" target="_blank" class="text-gray-400 hover:text-teal-400">View my projects</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-10">
+                            <h4 class="font-bold mb-4 text-gray-200">Availability</h4>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></div>
+                                <span class="text-gray-400">Available for freelance opportunities</span>
+                            </div>
+                            <div class="flex items-center mt-2">
+                                <div class="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></div>
+                                <span class="text-gray-400">Open to collaborations</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="card contact-card p-8">
+                        <h3 class="text-xl font-bold mb-6 text-teal-400">Send a Message</h3>
+                        <form class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-gray-400 mb-2">Name</label>
+                                <input type="text" id="name" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-gray-200 focus:outline-none focus:border-teal-500 transition" placeholder="Your name">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-400 mb-2">Email</label>
+                                <input type="email" id="email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-gray-200 focus:outline-none focus:border-teal-500 transition" placeholder="Your email">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-400 mb-2">Message</label>
+                                <textarea id="message" rows="5" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-gray-200 focus:outline-none focus:border-teal-500 transition" placeholder="Your message"></textarea>
+                            </div>
+                            <button type="submit" class="px-6 py-3 bg-teal-600 text-white font-semibold rounded hover:bg-teal-700 transition w-full shadow-lg shadow-teal-500/20">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-200 mb-4">Muhammad Masoom</h3>
+                    <p class="text-gray-400 mb-4">
+                        Computer Science student passionate about programming, automation, Linux, and cloud computing.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/services/page/85407333977850761a/" target="_blank" class="text-gray-400 hover:text-teal-400 transition">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="https://github.com/CBAJoker" target="_blank" class="text-gray-400 hover:text-teal-400 transition">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="mailto:cadetmasoom@gmail.com" class="text-gray-400 hover:text-teal-400 transition">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-gray-200 mb-4">Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-teal-400 transition">About</a></li>
+                        <li><a href="#skills" class="text-gray-400 hover:text-teal-400 transition">Skills</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-teal-400 transition">Projects</a></li>
+                        <li><a href="#resume" class="text-gray-400 hover:text-teal-400 transition">Resume</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-teal-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-gray-200 mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-teal-400 transition">Programming Tutoring</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-teal-400 transition">System Setup</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-teal-400 transition">Cloud Guidance</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-teal-400 transition">Technical Writing</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-gray-200 mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-gray-400 mt-1 mr-3"></i>
+                            <span class="text-gray-400">cadetmasoom@gmail.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-gray-400 mt-1 mr-3"></i>
+                            <span class="text-gray-400">Pakistan</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">
+                <p>&copy; 2025 Muhammad Masoom. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize particles.js
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 80,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: "#00c9a7"
+                    },
+                    shape: {
+                        type: "circle",
+                        stroke: {
+                            width: 0,
+                            color: "#000000"
+                        }
+                    },
+                    opacity: {
+                        value: 0.3,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 2,
+                            size_min: 0.3,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#00c9a7",
+                        opacity: 0.2,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 1,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: "grab"
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: "push"
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 140,
+                            line_linked: {
+                                opacity: 0.5
+                            }
+                        },
+                        push: {
+                            particles_nb: 4
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+        });
+    </script>
+</body>
+</html>
