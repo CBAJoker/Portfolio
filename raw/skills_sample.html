@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Student Soft Skills</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'soft-blue': '#e0f2fe',
+                        'medium-blue': '#3b82f6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.15);
+        }
+        .skill-card {
+            transition: all 0.3s ease;
+        }
+        .skill-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(59, 130, 246, 0.1);
+        }
+        .icon-container {
+            transition: transform 0.3s ease;
+        }
+        .skill-card:hover .icon-container {
+            transform: scale(1.1);
+        }
+        .header-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-4xl w-full mx-auto">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Essential Soft Skills for CS Students</h1>
+            <p class="text-gray-600 max-w-2xl mx-auto">Technical skills are important, but these soft skills will help you thrive in your computer science career</p>
+        </div>
+        
+        <div class="card p-8 mb-16">
+            <div class="flex flex-col items-center mb-10">
+                <div class="bg-soft-blue w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 header-icon">
+                    <i class="fas fa-brain text-medium-blue text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-medium-blue">Soft Skills</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Original Skills -->
+                
+                    <div class="flex items-start">
+                        <div class="icon-container bg-white p-3 rounded-lg mr-4 shadow-sm">
+                            <i class="fas fa-comments text-medium-blue text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1 text-lg">Communication</h4>
+                            <p class="text-gray-600">Clear technical explanations</p>
+                        </div>
+                    </div>
+                
+                
+                
+                    <div class="flex items-start">
+                        <div class="icon-container bg-white p-3 rounded-lg mr-4 shadow-sm">
+                            <i class="fas fa-users text-medium-blue text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1 text-lg">Teamwork</h4>
+                            <p class="text-gray-600">Collaborative approach</p>
+                        </div>
+                    </div>
+                
+                
+                
+                    <div class="flex items-start">
+                        <div class="icon-container bg-white p-3 rounded-lg mr-4 shadow-sm">
+                            <i class="fas fa-lightbulb text-medium-blue text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1 text-lg">Problem Solving</h4>
+                            <p class="text-gray-600">Analytical thinking</p>
+                        </div>
+                    </div>
+                
+                
+                
+                    <div class="flex items-start">
+                        <div class="icon-container bg-white p-3 rounded-lg mr-4 shadow-sm">
+                            <i class="fas fa-book text-medium-blue text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1 text-lg">Continuous Learning</h4>
+                            <p class="text-gray-600">Always improving skills</p>
+                        </div>
+                    </div>
+                
+                
+                <!-- New Skills -->
+                
+                    <div class="flex items-start">
+                        <div class="icon-container bg-white p-3 rounded-lg mr-4 shadow-sm">
+                            <i class="fas fa-tasks text-medium-blue text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1 text-lg">Time Management</h4>
+                            <p class="text-gray-600">Meeting project deadlines</p>
+                        </div>
+                    </div>
+                
+                
+                
+                    <div class="flex items-start">
+                        <div class="icon-container bg-white p-3 rounded-lg mr-4 shadow-sm">
+                            <i class="fas fa-sync-alt text-medium-blue text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1 text-lg">Adaptability</h4>
+                            <p class="text-gray-600">Embracing new technologies</p>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+        
+        <div class="text-center text-gray-600">
+            <p>Computer science students need both technical expertise and these essential soft skills to succeed in their careers</p>
+        </div>
+    </div>
+</body>
+</html>
