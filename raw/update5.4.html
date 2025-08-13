@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Masoom | Enhanced Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <style>
+        :root {
+            --primary: #8B5CF6;
+            --primary-light: #C4B5FD;
+            --primary-dark: #7C3AED;
+            --accent: #0EA5E9;
+            --accent-dark: #0284C7;
+            --dark-bg: #0F172A;
+            --darker-bg: #0A1120;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --glass: rgba(255, 255, 255, 0.08);
+            --text: #E2E8F0;
+            --text-light: #94A3B8;
+            --highlight: #38BDF8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+                       radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.15) 0%, transparent 40%);
+            z-index: -1;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+                        inset 0 0 15px rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4),
+                        0 0 30px rgba(139, 92, 246, 0.2),
+                        inset 0 0 15px rgba(255, 255, 255, 0.1);
+            border-color: rgba(139, 92, 246, 0.2);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background: rgba(200, 200, 200, 0.1);
+            border-radius: 5px;
+            margin: 10px 0 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 5px;
+            position: relative;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .neon-border {
+            position: relative;
+        }
+        
+        .neon-border::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            animation: slide 3s linear infinite;
+        }
+        
+        @keyframes slide {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 20px;
+        }
+        
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-item:hover {
+            transform: translateY(-5px);
+            background: rgba(139, 92, 246, 0.1);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.2);
+        }
+        
+        .tech-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        /* Magnetic Cursor Effect */
+        .cursor {
+            position: fixed;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: transparent;
+            border: 2px solid var(--accent);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.15s, width 0.2s, height 0.2s;
+        }
+        
+        .cursor-dot {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 10000;
+            mix-blend-mode: difference;
+            transition: transform 0.1s, width 0.2s, height 0.2s;
+        }
+        
+        .cursor-magnetic {
+            transform: translate(-50%, -50%) scale(1.8);
+            background: rgba(14, 165, 233, 0.2);
+        }
+        
+        .cursor-dot-magnetic {
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+        
+        .cursor-click {
+            transform: translate(-50%, -50%) scale(0.8);
+            background: var(--accent);
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background: var(--darker-bg);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            padding: 100px 30px 30px;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .mobile-nav a {
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(30, 41, 59, 0.5);
+            display: block;
+            transition: all 0.3s;
+        }
+        
+        .mobile-nav a:hover {
+            background: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 1.5rem;
+            background: transparent;
+            border: none;
+            color: var(--text);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .tech-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .glass-card {
+                padding: 25px;
+            }
+            
+            .mobile-hidden {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            transform: translateZ(0);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .hero-btn.primary {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);
+        }
+        
+        .hero-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6);
+        }
+        
+        .hero-btn.secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .hero-btn.secondary:hover {
+            background: rgba(139, 92, 246, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .nav-link {
+            position: relative;
+            padding: 8px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+        
+        .flex-center {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .relative {
+            position: relative;
+        }
+        
+        .about-card-wrapper {
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .gradient-border {
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            right: -12px;
+            bottom: -12px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #1a73e8, #ff6b6b);
+            background-size: 300% 300%;
+            border-radius: 20px;
+            z-index: 0;
+            filter: blur(15px);
+            opacity: 0.6;
+            animation: gradientPulse 8s ease infinite;
+        }
+        
+        .glass-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+        
+        .card-content {
+            padding: 40px;
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4ecdc4, #1a73e8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 30px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .avatar i {
+            font-size: 60px;
+            color: white;
+        }
+        
+        .profile-text h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #4ecdc4, #1a73e8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .profile-text p {
+            font-size: 1.1rem;
+            color: #c4d0e7;
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+        
+        .highlight-badge {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+            z-index: 2;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            margin: 25px 0;
+        }
+        
+        .about-section h2 {
+            color: #4ecdc4;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-section p {
+            color: #a8b2d1;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+        
+        .skills-section {
+            margin-top: 30px;
+        }
+        
+        .skills-section h3 {
+            color: #4ecdc4;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+        }
+        
+        .skill-badge {
+            background: rgba(78, 205, 196, 0.15);
+            color: #4ecdc4;
+            padding: 10px 15px;
+            border-radius: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            background: rgba(78, 205, 196, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4ecdc4;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-link:hover {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        @keyframes gradientPulse {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .avatar {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .highlight-badge {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-top: 20px;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .card-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-100 font-sans overflow-x-hidden">
+    <!-- Magnetic Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <button class="close-menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav class="mobile-nav">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#resume">Resume</a>
+            <a href="#contact">Contact</a>
+            <a href="https://www.linkedin.com/services/page/85407333977850761a/" target="_blank">
+                <i class="fab fa-linkedin-in mr-2"></i> LinkedIn
+            </a>
+            <a href="index-light.html">
+                <i class="fas fa-sun mr-2"></i> Light Mode
+            </a>
+        </nav>
+    </div>
+    
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-dark-bg bg-opacity-80 backdrop-blur-sm">
+        <nav class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3 group">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-purple-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
+                    <div class="relative w-10 h-10 rounded-full shadow-lg border-2 border-purple-500 transition-transform duration-300 group-hover:scale-110 flex items-center justify-center bg-gray-900">
+                        <span class="text-xl font-bold gradient-text">M</span>
+                    </div>
+                    <span class="absolute -bottom-2 -right-2 w-3 h-3 bg-green-400 border-2 border-gray-900 rounded-full animate-ping"></span>
+                </div>
+                <h1 class="text-2xl font-extrabold gradient-text tracking-tight transition group-hover:scale-105 duration-300">Muhammad Masoom</h1>
+            </div>
+            
+            <ul class="hidden md:flex space-x-8 text-base font-semibold items-center">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#resume" class="nav-link">Resume</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li>
+                    <a href="https://www.linkedin.com/services/page/85407333977850761a/" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="index-light.html" class="ml-2 px-3 py-1 bg-purple-900 text-purple-300 rounded-full font-medium shadow hover:bg-purple-800 transition hidden lg:inline-flex items-center">
+                        <i class="fas fa-sun mr-2"></i> Light Mode
+                    </a>
+                </li>
+            </ul>
+            
+            <button class="mobile-menu-btn md:hidden flex items-center px-3 py-2 rounded text-purple-400" aria-label="Menu">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex flex-col justify-center items-center relative overflow-hidden pt-16">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-600 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-72 h-72 bg-cyan-500 rounded-full blur-3xl opacity-15"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 text-center px-4 max-w-4xl">
+            <div class="relative mx-auto w-40 h-40 mb-8">
+                <div class="absolute inset-0 bg-purple-500 rounded-full blur-2xl opacity-30 animate-pulse"></div>
+                <div class="relative w-40 h-40 rounded-full border-4 border-purple-500 shadow-xl z-10 flex items-center justify-center bg-gray-900 overflow-hidden floating">
+                    <div class="w-full h-full bg-gray-800 rounded-full flex items-center justify-center text-6xl font-bold gradient-text">
+                        <img src="img/profile.jpeg" alt="Profile Picture" class="w-full h-full object-cover rounded-full">
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="text-4xl sm:text-6xl font-bold mb-4">
+                <span class="block mb-2">Hello, I'm</span>
+                <span id="typed-name" class="gradient-text text-5xl sm:text-7xl"></span>
+            </h2>
+            
+            <div class="glass-card p-6 mb-8">
+                <p class="text-xl text-gray-300">
+                    Computer Science student passionate about <span class="font-bold gradient-text">programming, automation, Linux, and cloud computing</span>. I build efficient solutions and explore cutting-edge technologies.
+                </p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center hero-buttons">
+                <a href="#projects" class="hero-btn primary">
+                    <i class="fas fa-code mr-2"></i> View Projects
+                </a>
+                <a href="#contact" class="hero-btn secondary">
+                    <i class="fas fa-paper-plane mr-2"></i> Contact Me
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+            <a href="#about" class="text-purple-400 hover:text-purple-200">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="section-title text-center">About Me</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="container">
+        <div class="flex-center">
+            <div class="about-card-wrapper">
+                <div class="relative">
+                    <div class="gradient-border"></div>
+                    <div class="glass-card">
+                        <div class="card-content">
+                            <div class="profile-header">
+                                <div class="avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="profile-text">
+                                    <h1>Alex Morgan</h1>
+                                    <p>Senior Full Stack Developer & UI/UX Designer with 8+ years of experience creating innovative digital solutions.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="highlight-badge">
+                                <i class="fas fa-star"></i> Available for Freelance
+                            </div>
+                            
+                            <div class="divider"></div>
+                            
+                            <div class="about-section">
+                                <h2>About Me</h2>
+                                <p>I specialize in creating beautiful, functional interfaces and robust backend systems. My passion lies in solving complex problems with elegant solutions that delight users.</p>
+                                <p>With expertise in modern JavaScript frameworks, cloud architecture, and responsive design principles, I build applications that are both visually stunning and technically sound.</p>
+                                
+                                <div class="skills-section">
+                                    <h3>Technical Skills</h3>
+                                    <div class="skills-grid">
+                                        <div class="skill-badge">React</div>
+                                        <div class="skill-badge">Node.js</div>
+                                        <div class="skill-badge">TypeScript</div>
+                                        <div class="skill-badge">Python</div>
+                                        <div class="skill-badge">AWS</div>
+                                        <div class="skill-badge">UI/UX Design</div>
+                                        <div class="skill-badge">MongoDB</div>
+                                        <div class="skill-badge">GraphQL</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="social-links">
+                                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                
+                <div>
+                    <div class="glass-card p-8">
+                        <p class="text-lg text-gray-300 mb-6">
+                            I'm an enthusiastic <span class="font-bold gradient-text">Computer Science student</span> with a passion for
+                            <span class="font-bold gradient-text">programming, scripting, system administration, and cloud computing</span>.
+                        </p>
+                        <p class="text-gray-400 mb-6">
+                            My current focus is on mastering the Linux command line, writing efficient Python scripts for automation, and gaining hands-on experience with cloud platforms like AWS.
+                            I'm also building a strong foundation in system-level programming and DevOps practices to support scalable, real-world applications.
+                        </p>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-xl font-bold mb-4 text-purple-400">Technologies I Work With</h3>
+                            <div class="tech-grid">
+                                <div class="tech-item">
+                                    <i class="fab fa-python tech-icon"></i>
+                                    <span>Python</span>
+                                </div>
+                                <div class="tech-item">
+                                    <i class="fab fa-linux tech-icon"></i>
+                                    <span>Linux</span>
+                                </div>
+                                <div class="tech-item">
+                                    <i class="fab fa-aws tech-icon"></i>
+                                    <span>AWS</span>
+                                </div>
+                                <div class="tech-item">
+                                    <i class="fas fa-terminal tech-icon"></i>
+                                    <span>Bash</span>
+                                </div>
+                                <div class="tech-item">
+                                    <i class="fab fa-docker tech-icon"></i>
+                                    <span>Docker</span>
+                                </div>
+                                <div class="tech-item">
+                                    <i class="fab fa-git-alt tech-icon"></i>
+                                    <span>Git</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gradient-to-b from-gray-900/30 to-transparent">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="section-title text-center">Technical Skills</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="glass-card p-8">
+                    <h3 class="text-xl font-bold mb-6 text-purple-400">Technical Expertise</h3>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium text-gray-200">Python Development</span>
+                            <span class="text-purple-400">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%; background: linear-gradient(90deg, var(--primary), var(--accent));"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium text-gray-200">Linux System Administration</span>
+                            <span class="text-purple-400">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%; background: linear-gradient(90deg, var(--primary), var(--accent));"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium text-gray-200">AWS Cloud Services</span>
+                            <span class="text-purple-400">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%; background: linear-gradient(90deg, var(--primary), var(--accent));"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium text-gray-200">C/C++ Programming</span>
+                            <span class="text-purple-400">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%; background: linear-gradient(90deg, var(--primary), var(--accent));"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card p-8">
+                    <h3 class="text-xl font-bold mb-6 text-purple-400">Soft Skills</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex items-start">
+                            <div class="bg-gradient-to-br from-purple-700 to-purple-900 p-3 rounded-lg mr-4">
+                                <i class="fas fa-comments text-purple-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1 text-gray-200">Communication</h4>
+                                <p class="text-gray-400 text-sm">Clear technical explanations</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-gradient-to-br from-purple-700 to-purple-900 p-3 rounded-lg mr-4">
+                                <i class="fas fa-users text-purple-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1 text-gray-200">Teamwork</h4>
+                                <p class="text-gray-400 text-sm">Collaborative approach</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-gradient-to-br from-purple-700 to-purple-900 p-3 rounded-lg mr-4">
+                                <i class="fas fa-lightbulb text-purple-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1 text-gray-200">Problem Solving</h4>
+                                <p class="text-gray-400 text-sm">Analytical thinking</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-gradient-to-br from-purple-700 to-purple-900 p-3 rounded-lg mr-4">
+                                <i class="fas fa-book text-purple-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1 text-gray-200">Continuous Learning</h4>
+                                <p class="text-gray-400 text-sm">Always improving skills</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-gradient-to-br from-purple-700 to-purple-900 p-3 rounded-lg mr-4">
+                                <i class="fas fa-sync-alt text-purple-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1 text-gray-200">Adaptability</h4>
+                                <p class="text-gray-400 text-sm">Embracing new technologies</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-gradient-to-br from-purple-700 to-purple-900 p-3 rounded-lg mr-4">
+                                <i class="fas fa-tasks text-purple-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1 text-gray-200">Time Management</h4>
+                                <p class="text-gray-400 text-sm">Meeting project deadlines</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="section-title text-center">Featured Projects</h2>
+            
+            <!-- Project 1 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                <div class="relative">
+                    <div class="glass-card overflow-hidden">
+                        <div class="card-content">
+                            <div class="w-full h-64 bg-gradient-to-br from-purple-900 to-gray-900 flex flex-col items-center justify-center p-6">
+                                <i class="fab fa-windows text-6xl text-purple-500 mb-4"></i>
+                                <h3 class="text-2xl font-bold text-white">Windows 11 Setup</h3>
+                                <p class="text-purple-300 mt-2">For Students & Developers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="inline-block px-4 py-1 rounded-full text-sm font-medium mb-4 bg-gradient-to-r from-purple-600 to-purple-800 text-purple-200">
+                        System Setup
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-200">Windows 11 Setup for Students & Developers</h3>
+                    <p class="text-gray-400 mb-6">
+                        Set up a clean and productive Windows 11 environment tailored for students and beginner developers.
+                        Included all essentials like Dev-C++, Visual Studio Code, modern browsers, MS Office, a lightweight VM setup, and Obsidian for note-taking.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <span class="bg-gray-800 px-3 py-1 rounded text-sm text-gray-300">Dev-C++</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded text-sm text-gray-300">VS Code</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded text-sm text-gray-300">Obsidian</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded text-sm text-gray-300">VM Setup</span>
+                    </div>
+                    <a href="https://github.com/CBAJoker" target="_blank" class="inline-flex items-center text-purple-400 font-medium hover:text-purple-300">
+                        View on GitHub <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                <div class="lg:order-2 relative">
+                    <div class="glass-card overflow-hidden">
+                        <div class="card-content">
+                            <div class="w-full h-64 bg-gradient-to-br from-cyan-900 to-gray-900 flex flex-col items-center justify-center p-6">
+                                <i class="fab fa-linux text-6xl text-cyan-500 mb-4"></i>
+                                <h3 class="text-2xl font-bold text-white">Kali WSL Setup</h3>
+                                <p class="text-cyan-300 mt-2">With MOTD System Stats</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:order-1">
+                    <div class="inline-block px-4 py-1 rounded-full text-sm font-medium mb-4 bg-gradient-to-r from-cyan-600 to-cyan-800 text-cyan-200">
+                        Linux Configuration
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-200">Efficient Kali WSL Setup with MOTD System Stats</h3>
+                    <p class="text-gray-400 mb-6">
+                        Helped a fellow student install Kali Linux inside WSL with custom MOTD to display key system info like hostname, IP address, CPU, RAM, and disk usage.
+                        This lightweight setup is perfect for students who want to practice network testing without slowing down their system.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <span class="bg-gray-800 px-3 py-1 rounded text-sm text-gray-300">Kali Linux</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded text-sm text-gray-300">WSL</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded text-sm text-gray-300">Bash Scripting</span>
+                        <span class="bg-gray-800 px-3 py-1 rounded text-sm text-gray-300">System Monitoring</span>
+                    </div>
+                    <a href="https://github.com/CBAJoker" target="_blank" class="inline-flex items-center text-purple-400 font-medium hover:text-purple-300">
+                        View on GitHub <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="py-20 bg-gradient-to-b from-gray-900/30 to-transparent">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="section-title text-center">Resume</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="glass-card p-8">
+                    <h3 class="text-xl font-bold mb-6 text-purple-400">Education & Experience</h3>
+                    
+                    <div class="space-y-8">
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-lg text-gray-200">Bachelor of Computer Science</h4>
+                            <div class="text-purple-400 mb-2">Quest Nawabshah | 2024 - Present</div>
+                            <p class="text-gray-400">
+                                Focus on programming, system administration, and cloud computing.
+                                Relevant coursework: Data Structures, Algorithms, Operating Systems.
+                            </p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-lg text-gray-200">Programming Tutor</h4>
+                            <div class="text-purple-400 mb-2">Quest Nawabshah | 2024 - Present</div>
+                            <p class="text-gray-400">
+                                Help students master Python, C, and C++ concepts through personalized tutoring sessions.
+                                Developed custom learning materials for complex topics.
+                            </p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-lg text-gray-200">IT Support Specialist</h4>
+                            <div class="text-purple-400 mb-2">Freelancer | 2018 - Present</div>
+                            <p class="text-gray-400">
+                                Provided technical support for students and beginners to maintain and set up their environments for Learning and Development. I also provide cost-effective ideas and time management solutions, maintained systems, and implemented automation scripts.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="glass-card p-8 h-full flex flex-col">
+                        <div class="flex-grow">
+                            <h3 class="text-xl font-bold mb-6 text-purple-400">Download Resume</h3>
+                            <p class="text-gray-400 mb-8">
+                                Download my full resume to see detailed information about my education, work experience, skills, and accomplishments.
+                            </p>
+                            
+                            <div class="glass-card p-6 mb-8 border border-purple-500/20">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-file-pdf text-red-400 text-2xl mr-3"></i>
+                                    <div>
+                                        <h4 class="font-bold text-gray-200">Resume.pdf</h4>
+                                        <p class="text-gray-500 text-sm">Updated: June 2024</p>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-400">
+                                    Includes detailed information about projects, technologies, and professional experience.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="/src/resume.pdf" download class="hero-btn primary">
+                                <i class="fas fa-download mr-2"></i> Download Resume
+                            </a>
+                            <a href="/src/resume.html" target="_blank" class="hero-btn secondary">
+                                <i class="fas fa-eye mr-2"></i> View Online
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="section-title text-center">Get In Touch</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="glass-card p-8">
+                        <h3 class="text-xl font-bold mb-6 text-purple-400">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-gradient-to-br from-purple-700 to-purple-900 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-envelope text-purple-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1 text-gray-200">Email</h4>
+                                    <a href="mailto:cadetmasoom@gmail.com" class="text-gray-400 hover:text-purple-400">cadetmasoom@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-gradient-to-br from-purple-700 to-purple-900 p-3 rounded-lg mr-4">
+                                    <i class="fab fa-linkedin-in text-purple-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1 text-gray-200">LinkedIn</h4>
+                                    <a href="https://www.linkedin.com/services/page/85407333977850761a/" target="_blank" class="text-gray-400 hover:text-purple-400">Connect with me</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-gradient-to-br from-purple-700 to-purple-900 p-3 rounded-lg mr-4">
+                                    <i class="fab fa-github text-purple-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1 text-gray-200">GitHub</h4>
+                                    <a href="https://github.com/CBAJoker?tab=repositories" target="_blank" class="text-gray-400 hover:text-purple-400">View my projects</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="glass-card p-8">
+                        <h3 class="text-xl font-bold mb-6 text-purple-400">Send a Message</h3>
+                        <form class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-gray-400 mb-2">Name</label>
+                                <input type="text" id="name" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-gray-200 focus:outline-none focus:border-purple-500 transition" placeholder="Your name">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-400 mb-2">Email</label>
+                                <input type="email" id="email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-gray-200 focus:outline-none focus:border-purple-500 transition" placeholder="Your email">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-400 mb-2">Message</label>
+                                <textarea id="message" rows="5" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-gray-200 focus:outline-none focus:border-purple-500 transition" placeholder="Your message"></textarea>
+                            </div>
+                            <button type="submit" class="hero-btn primary w-full">
+                                <i class="fas fa-paper-plane mr-2"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center">
+                <div class="flex justify-center space-x-6 mb-6">
+                    <a href="https://www.linkedin.com/services/page/85407333977850761a/" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/CBAJoker" target="_blank" class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:cadetmasoom@gmail.com" class="social-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                <p class="text-gray-500">&copy; 2025 Muhammad Masoom. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const closeMenuBtn = document.querySelector('.close-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // Close menu when clicking on links
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Magnetic cursor effect
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+        let mouseX = 0;
+        let mouseY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+        let cursorDotX = 0;
+        let cursorDotY = 0;
+        let isHovering = false;
+        
+        // Update mouse position
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        // Animate cursor with magnetic effect
+        const animateCursor = () => {
+            // Move cursor with easing
+            cursorX += (mouseX - cursorX) * 0.15;
+            cursorY += (mouseY - cursorY) * 0.15;
+            
+            // Move cursor dot with less easing
+            cursorDotX += (mouseX - cursorDotX) * 0.1;
+            cursorDotY += (mouseY - cursorDotY) * 0.1;
+            
+            // Apply magnetic effect when hovering over interactive elements
+            if (isHovering) {
+                cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) scale(1.8)`;
+                cursorDot.style.transform = `translate(${cursorDotX}px, ${cursorDotY}px) scale(1.5)`;
+            } else {
+                cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+                cursorDot.style.transform = `translate(${cursorDotX}px, ${cursorDotY}px)`;
+            }
+            
+            requestAnimationFrame(animateCursor);
+        };
+        
+        // Initialize cursor animation
+        animateCursor();
+        
+        // Add magnetic effect to interactive elements
+        const interactiveElements = document.querySelectorAll(
+            'a, button, .tech-item, .glass-card, .hero-btn, .social-icon, input, textarea'
+        );
+        
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                isHovering = true;
+                cursor.classList.add('cursor-magnetic');
+                cursorDot.classList.add('cursor-dot-magnetic');
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                isHovering = false;
+                cursor.classList.remove('cursor-magnetic');
+                cursorDot.classList.remove('cursor-dot-magnetic');
+            });
+        });
+        
+        // Click animation
+        document.addEventListener('mousedown', () => {
+            cursor.classList.add('cursor-click');
+        });
+        
+        document.addEventListener('mouseup', () => {
+            cursor.classList.remove('cursor-click');
+        });
+        
+        // Hide cursor on touch devices
+        if ('ontouchstart' in window || navigator.maxTouchPoints) {
+            cursor.style.display = 'none';
+            cursorDot.style.display = 'none';
+        }
+        
+        // Typed.js for name animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const typed = new Typed('#typed-name', {
+                strings: ["Muhammad Masoom", "a Developer", "a Tech Enthusiast"],
+                typeSpeed: 80,
+                backSpeed: 40,
+                loop: true,
+                showCursor: true,
+                cursorChar: '|'
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

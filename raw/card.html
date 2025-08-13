@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Section Card</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+        
+        .flex-center {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .relative {
+            position: relative;
+        }
+        
+        .about-card-wrapper {
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .gradient-border {
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            right: -12px;
+            bottom: -12px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #1a73e8, #ff6b6b);
+            background-size: 300% 300%;
+            border-radius: 20px;
+            z-index: 0;
+            filter: blur(15px);
+            opacity: 0.6;
+            animation: gradientPulse 8s ease infinite;
+        }
+        
+        .glass-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+        
+        .card-content {
+            padding: 40px;
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4ecdc4, #1a73e8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 30px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .avatar i {
+            font-size: 60px;
+            color: white;
+        }
+        
+        .profile-text h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #4ecdc4, #1a73e8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .profile-text p {
+            font-size: 1.1rem;
+            color: #c4d0e7;
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+        
+        .highlight-badge {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+            z-index: 2;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            margin: 25px 0;
+        }
+        
+        .about-section h2 {
+            color: #4ecdc4;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-section p {
+            color: #a8b2d1;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+        
+        .skills-section {
+            margin-top: 30px;
+        }
+        
+        .skills-section h3 {
+            color: #4ecdc4;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+        }
+        
+        .skill-badge {
+            background: rgba(78, 205, 196, 0.15);
+            color: #4ecdc4;
+            padding: 10px 15px;
+            border-radius: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            background: rgba(78, 205, 196, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4ecdc4;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-link:hover {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        @keyframes gradientPulse {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .avatar {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .highlight-badge {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-top: 20px;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .card-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="flex-center">
+            <div class="about-card-wrapper">
+                <div class="relative">
+                    <div class="gradient-border"></div>
+                    <div class="glass-card">
+                        <div class="card-content">
+                            <div class="profile-header">
+                                <div class="avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="profile-text">
+                                    <h1>Alex Morgan</h1>
+                                    <p>Senior Full Stack Developer & UI/UX Designer with 8+ years of experience creating innovative digital solutions.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="highlight-badge">
+                                <i class="fas fa-star"></i> Available for Freelance
+                            </div>
+                            
+                            <div class="divider"></div>
+                            
+                            <div class="about-section">
+                                <h2>About Me</h2>
+                                <p>I specialize in creating beautiful, functional interfaces and robust backend systems. My passion lies in solving complex problems with elegant solutions that delight users.</p>
+                                <p>With expertise in modern JavaScript frameworks, cloud architecture, and responsive design principles, I build applications that are both visually stunning and technically sound.</p>
+                                
+                                <div class="skills-section">
+                                    <h3>Technical Skills</h3>
+                                    <div class="skills-grid">
+                                        <div class="skill-badge">React</div>
+                                        <div class="skill-badge">Node.js</div>
+                                        <div class="skill-badge">TypeScript</div>
+                                        <div class="skill-badge">Python</div>
+                                        <div class="skill-badge">AWS</div>
+                                        <div class="skill-badge">UI/UX Design</div>
+                                        <div class="skill-badge">MongoDB</div>
+                                        <div class="skill-badge">GraphQL</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="social-links">
+                                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
